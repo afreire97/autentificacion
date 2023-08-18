@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import  AuthenticationForm,UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -22,3 +22,16 @@ class CustomForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Esta dirección de correo electrónico ya está en uso.")
         return email
+    
+    
+class CustomLoginForm(AuthenticationForm):
+    
+    username = forms.CharField(
+        max_length=254,
+        widget=forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': 'Email'})
+    )
+    password = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control form-control-lg', 'placeholder': 'Password'}),
+    )    
