@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+<form class="mt-5 pt-5 justify-content-center" action="{% url 'andre:newFight' %}" method="post">
+{% csrf_token %}
+    
+<label for="{{ form.titulo.id_for_label }}">Título</label>
+{{ form.titulo }}
+
+
+
+<button type="submit">Enviar</button>
+
+
+
+</form>
+
+
+
+
+{% endblock %}

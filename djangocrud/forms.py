@@ -2,7 +2,7 @@ from django.contrib.auth.forms import  AuthenticationForm,UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-
+from .models import Comentario, Discusion
 class CustomForm(UserCreationForm):
     
     email = forms.EmailField(required=True, help_text= "Campo requerido. Introduce un email válido.")
@@ -35,3 +35,10 @@ class CustomLoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'class': 'form-control form-control-lg', 'placeholder': 'Password'}),
     )    
+
+
+class DiscusionForm(forms.ModelForm):
+    
+    class Meta:
+        model = Discusion
+        fields = ("titulo",)

@@ -177,6 +177,10 @@
                                             <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Unsolved</a>
                                             <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">No replies yet</a>
                                         </nav>
+                                        {% if user.is_authenticated %}
+                                        <a href="{% url 'andre:newFight' %}">Crea una nueva discusion</a>
+
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
